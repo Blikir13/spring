@@ -1,8 +1,11 @@
 package com.example.weatherdatainput.repository.entity.Response;
 
+
 import dto.Request.TransferableObject;
 
-public class ResponseDto extends TransferableObject {
+import java.io.Serializable;
+
+public class ResponseDto extends TransferableObject implements Serializable {
     private static final long serialVersionUID = 1L;
     private String id;
     private String errorMessage;

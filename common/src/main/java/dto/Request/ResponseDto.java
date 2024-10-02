@@ -1,6 +1,5 @@
-package com.example.weatherdatastorage.repository.entity.Response;
+package dto.Request;
 
-import dto.Request.TransferableObject;
 
 import java.io.Serializable;
 

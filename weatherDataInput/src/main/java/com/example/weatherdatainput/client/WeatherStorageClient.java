@@ -4,7 +4,7 @@ import com.example.weatherdatainput.config.Config;
 import dto.Request.TransferableObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.example.weatherdatainput.repository.entity.Response.ResponseDto;
+import dto.Request.ResponseDto;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
