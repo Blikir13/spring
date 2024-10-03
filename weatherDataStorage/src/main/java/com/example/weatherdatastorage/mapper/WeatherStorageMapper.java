@@ -2,7 +2,6 @@ package com.example.weatherdatastorage.mapper;
 
 import dto.Request.CreateEntity;
 import dto.Request.UpdateEntity;
-import com.google.gson.Gson;
 import com.example.weatherdatastorage.repository.entity.StationDataJsonEntity;
 import org.springframework.stereotype.Component;
 

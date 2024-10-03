@@ -3,8 +3,8 @@ package com.example.monitoring.client;
 import com.example.monitoring.config.Config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.example.monitoring.repository.entity.MonitoringDto;
 import com.example.monitoring.service.LoggingService;
+import dto.Request.MonitoringDto;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

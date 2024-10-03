@@ -2,7 +2,7 @@ package com.example.monitoring.repository.impl;
 
 import com.example.monitoring.config.Config;
 import org.springframework.stereotype.Repository;
-import com.example.monitoring.repository.entity.MonitoringDto;
+import dto.Request.MonitoringDto;
 
 import java.io.File;
 import java.io.FileOutputStream;

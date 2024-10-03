@@ -3,7 +3,7 @@ package com.example.weatherdatainput.client;
 import com.example.weatherdatainput.config.Config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.example.weatherdatainput.repository.entity.MonitoringDto;
+import dto.Request.MonitoringDto;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;

@@ -14,15 +14,13 @@ import java.util.logging.Logger;
 
 @Component
 public class ConsoleManager {
-    private final Config config;
     private final WeatherInputService dataReceiverService;
     private final Console console;
     private final Logger logger = Logger.getLogger(ConsoleManager.class.getName());
     private boolean flag;
 
     @Autowired
-    public ConsoleManager(Config config, WeatherInputService dataReceiverService, Console console) {
-        this.config = config;
+    public ConsoleManager(WeatherInputService dataReceiverService, Console console) {
         this.dataReceiverService = dataReceiverService;
         this.console = console;
     }

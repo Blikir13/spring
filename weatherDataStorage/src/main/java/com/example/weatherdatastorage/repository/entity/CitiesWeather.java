@@ -12,8 +12,6 @@ public class CitiesWeather {
     private String city;
     private TemperatureRange temperatureRange;
 
-    // Геттеры и сеттеры
-
     public String getId() {
         return id;
     }

@@ -2,7 +2,7 @@ package com.example.monitoring.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.monitoring.repository.entity.MonitoringDto;
+import dto.Request.MonitoringDto;
 import com.example.monitoring.repository.impl.LogFileRepository;
 
 @Service

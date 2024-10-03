@@ -25,5 +25,4 @@ public class Station {
     public void setStationNumber(String stationNumber) {
         this.stationNumber = stationNumber;
     }
-// Конструкторы, геттеры и сеттеры
 }

@@ -26,13 +26,11 @@ public class WeatherStorageClient {
     private ObjectOutputStream objectOutputStream;
     private ObjectInputStream objectInputStream;
     private final int serverPort;
-    private final Config config;
     private final WeatherStorageService dataProcessorService;
     private final Logger logger = Logger.getLogger(WeatherStorageClient.class.getName());
 
     @Autowired
     public WeatherStorageClient(Config config, WeatherStorageService dataProcessorService) {
-        this.config=config;
         this.serverPort = config.getPort();
         this.dataProcessorService = dataProcessorService;
     }
