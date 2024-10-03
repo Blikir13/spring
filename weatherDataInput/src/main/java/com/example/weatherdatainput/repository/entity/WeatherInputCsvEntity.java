@@ -1,9 +1,17 @@
 package com.example.weatherdatainput.repository.entity;
+import javax.persistence.*;
 
+@javax.persistence.Entity
+@Table(name = "station")
 public class WeatherInputCsvEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(nullable = false)
     private int stationNumber;
+    @Column(nullable = false)
     private String timestamp;
+    @Column()
     private String fileName;
 
     public int getId() {

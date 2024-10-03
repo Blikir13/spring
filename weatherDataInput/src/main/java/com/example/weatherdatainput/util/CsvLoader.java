@@ -7,7 +7,7 @@ import com.example.weatherdatainput.repository.entity.WeatherInputCsvEntity;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-
+/*
 @Component
 public class CsvLoader {
     private static final String csvHeader = "id,station_number,timestamp,file_name";
@@ -113,3 +113,4 @@ public class CsvLoader {
         return csvEntities;
     }
 }
+*/

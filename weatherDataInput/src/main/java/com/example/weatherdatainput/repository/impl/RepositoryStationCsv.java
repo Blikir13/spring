@@ -3,10 +3,10 @@ package com.example.weatherdatainput.repository.impl;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 import com.example.weatherdatainput.repository.entity.WeatherInputCsvEntity;
-import com.example.weatherdatainput.util.CsvLoader;
+//import com.example.weatherdatainput.util.CsvLoader;
 
 import java.util.List;
-
+/*
 @Repository
 public class RepositoryStationCsv {
     private final CsvLoader csvLoader;
@@ -41,7 +41,7 @@ public class RepositoryStationCsv {
         return csvLoader.loadStationData();
     }
 
-    public void update(String path) {
+    public void update(int path) {
         List<WeatherInputCsvEntity> csvEntities = csvLoader.loadStationData();
         WeatherInputCsvEntity last = csvEntities.get(csvEntities.size() - 1);
         last.setFileName(path);
@@ -50,11 +50,11 @@ public class RepositoryStationCsv {
 
     public String deleteRecord(int id) {
         List<WeatherInputCsvEntity> csvEntities = csvLoader.loadStationData();
-        String path = "";
+        int path = 0;
         for (int i = csvEntities.size() - 1; i >= 0; i--) {
             WeatherInputCsvEntity stationDataCsvEntity = csvEntities.get(i);
             if (stationDataCsvEntity.getId() == id) {
-                path = stationDataCsvEntity.getFileName() != null ? stationDataCsvEntity.getFileName() : path;
+                path = stationDataCsvEntity.getFileName() != 0 ? stationDataCsvEntity.getFileName() : path;
                 csvEntities.remove(i);
             }
         }
@@ -77,3 +77,4 @@ public class RepositoryStationCsv {
         return path;
     }
 }
+*/

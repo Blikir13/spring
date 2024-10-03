@@ -1,7 +1,12 @@
 package com.example.weatherdatastorage.repository.entity;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "users")
 public class StationDataJsonEntity {
-    private int id;
+    @Id
+    private String id;
     private int stationNumber;
     private String city;
     private double temperature;
@@ -13,11 +18,11 @@ public class StationDataJsonEntity {
 
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -67,5 +72,9 @@ public class StationDataJsonEntity {
 
     public void setWindDirection(String windDirection) {
         this.windDirection = windDirection;
+    }
+
+    public String toString() {
+        return getId() + getStationNumber() + getCity() + getPressure();
     }
 }

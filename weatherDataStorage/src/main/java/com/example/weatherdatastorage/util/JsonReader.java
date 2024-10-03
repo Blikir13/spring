@@ -63,34 +63,34 @@ public class JsonReader {
         }
     }
 
-    public void writeJson(StationDataJsonEntity stationDataJsonEntity, String resPath, String updatePath) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        String path;
-        if (Objects.equals(updatePath, "")) {
-            stationDataJsonEntity.setId(getNextFileNumber(resPath));
-            path = resPath + slash + getNextFileNumber(resPath) + postfix;
-        } else {
-            int dotIndex1 = updatePath.indexOf(postfix);
-            int id = Integer.parseInt(updatePath.substring(0, dotIndex1));
-            stationDataJsonEntity.setId(id);
-            path = resPath + slash + updatePath;
-        }
-
-        try {
-            File file = new File(path);
-            file.createNewFile();
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, e.getMessage(), e);
-        }
-
-        try (FileWriter writer = new FileWriter(path);){
-            gson.toJson(stationDataJsonEntity, writer);
-            System.out.println("city"+ stationDataJsonEntity.getCity() + " " + path);
-            logger.log(Level.INFO, "Данные успешно записаны в файл weatherData.json");
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, e.getMessage(), e);
-        }
-    }
+//    public void writeJson(StationDataJsonEntity stationDataJsonEntity, String resPath, String updatePath) {
+//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//        String path;
+//        if (Objects.equals(updatePath, "")) {
+//            stationDataJsonEntity.setId(getNextFileNumber(resPath));
+//            path = resPath + slash + getNextFileNumber(resPath) + postfix;
+//        } else {
+//            int dotIndex1 = updatePath.indexOf(postfix);
+//            int id = Integer.parseInt(updatePath.substring(0, dotIndex1));
+//            stationDataJsonEntity.setId(id);
+//            path = resPath + slash + updatePath;
+//        }
+//
+//        try {
+//            File file = new File(path);
+//            file.createNewFile();
+//        } catch (IOException e) {
+//            logger.log(Level.SEVERE, e.getMessage(), e);
+//        }
+//
+//        try (FileWriter writer = new FileWriter(path);){
+//            gson.toJson(stationDataJsonEntity, writer);
+//            System.out.println("city"+ stationDataJsonEntity.getCity() + " " + path);
+//            logger.log(Level.INFO, "Данные успешно записаны в файл weatherData.json");
+//        } catch (IOException e) {
+//            logger.log(Level.SEVERE, e.getMessage(), e);
+//        }
+//    }
 
     public String getCityByStation(int stationNumber) {
         String strStationNumber = Integer.toString(stationNumber);

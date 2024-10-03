@@ -15,6 +15,6 @@ public class WeatherStorageJson {
     }
 
     public void write(StationDataJsonEntity stationDataJsonEntity, String path, String updatePath) {
-        jsonReader.writeJson(stationDataJsonEntity, path, updatePath);
+//        jsonReader.writeJson(stationDataJsonEntity, path, updatePath);
     }
 }

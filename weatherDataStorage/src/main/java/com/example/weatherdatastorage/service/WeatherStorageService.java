@@ -1,6 +1,7 @@
 package com.example.weatherdatastorage.service;
 
 import com.example.weatherdatastorage.config.Config;
+import com.example.weatherdatastorage.repository.impl.RepositoryMongo;
 import dto.Request.CreateEntity;
 import dto.Request.UpdateEntity;
 import com.example.weatherdatastorage.mapper.WeatherStorageMapper;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import dto.Request.ResponseDto;
 
 import java.io.File;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,6 +22,7 @@ import java.util.logging.Logger;
 public class WeatherStorageService {
     private final Config config;
     private final WeatherStorageJson stationDataJson;
+    private final RepositoryMongo repositoryMongo;
     private final WeatherStorageMapper stationDataMapper;
     private final Validation validation;
     private static final Logger logger = Logger.getLogger(WeatherStorageService.class.getName());
@@ -29,19 +32,24 @@ public class WeatherStorageService {
 
     @Autowired
     public WeatherStorageService(WeatherStorageJson stationDataJson, WeatherStorageMapper stationDataMapper,
-                                 Validation validation, Config config) {
+                                 Validation validation, Config config, RepositoryMongo repositoryMongo) {
         this.stationDataMapper = stationDataMapper;
         this.stationDataJson = stationDataJson;
         this.validation = validation;
         this.config = config;
+        this.repositoryMongo = repositoryMongo;
     }
 
     public ResponseDto process(CreateEntity createEntity) {
         try {
             validation.isStationExist(createEntity);
             StationDataJsonEntity stationDataJsonEntity = stationDataMapper.toStationDataJsonEntity(createEntity);
-            stationDataJson.write(stationDataJsonEntity, config.getResultJsonPath(), "");
-            return new ResponseDto(stationDataJsonEntity.getId() + postfix, "");
+//            stationDataJson.write(stationDataJsonEntity, config.getResultJsonPath(), "");
+            System.out.println(stationDataJsonEntity);
+//            stationDataJsonEntity.setId(null);
+            StationDataJsonEntity savedEntity = repositoryMongo.save(stationDataJsonEntity);
+            System.out.println(savedEntity);
+            return new ResponseDto(savedEntity.getId(), "");
         } catch (IllegalArgumentException e) {
             logger.log(Level.SEVERE, e.getMessage(), e);
             return new ResponseDto("", e.getMessage());
@@ -53,18 +61,24 @@ public class WeatherStorageService {
         try {
             validation.isStationExist(updateEntity);
             StationDataJsonEntity stationDataJsonEntity = stationDataMapper.toStationDataJsonEntity(updateEntity);
-            stationDataJson.write(stationDataJsonEntity, config.getResultJsonPath(), updateEntity.getPath());
-            return new ResponseDto(stationDataJsonEntity.getId() + postfix, "");
+//            stationDataJson.write(stationDataJsonEntity, config.getResultJsonPath(), updateEntity.getPath());
+            String id = updateEntity.getPath();
+            if (!Objects.equals(id, "")) {
+                stationDataJsonEntity.setId(id);
+            }
+            repositoryMongo.save(stationDataJsonEntity);
+            return new ResponseDto(stationDataJsonEntity.getId(), "");
         } catch (IllegalArgumentException e) {
             logger.log(Level.SEVERE, e.getMessage(), e);
             return new ResponseDto("", e.getMessage());
         }
     }
 
-    public ResponseDto delete(String path) {
-        File file = new File(config.getResultJsonPath() + slash + path);
-        file.delete();
-        return new ResponseDto(deleted + path, "");
+    public ResponseDto delete(String id) {
+//        File file = new File(config.getResultJsonPath() + slash + path);
+//        file.delete();
+        repositoryMongo.deleteById(id);
+        return new ResponseDto("deleted" +  id, "");
     }
 
 }
