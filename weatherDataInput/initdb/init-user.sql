@@ -1,2 +1,0 @@
-CREATE USER kirblik WITH PASSWORD 'password';
-GRANT ALL PRIVILEGES ON DATABASE station TO kirblik;
